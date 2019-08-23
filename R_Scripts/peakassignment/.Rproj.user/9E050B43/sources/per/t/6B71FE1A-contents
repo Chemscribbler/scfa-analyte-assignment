@@ -1,0 +1,28 @@
+#'Pull GC related Metadata
+#'
+#'`samplelabel` is a convenience function that pulls out meta-data from the
+#'extracted datafile. Notably it splits up the SID column into component columns
+#'of Experiment ID (EID), plate identity (PID), and Well
+#'
+#'Based on how the sample name is formated it will also determine if the sample
+#'is one of blank/standard/calibration/sample and give the appropriate label
+#'
+#'
+#'@param df A dataframe containing SCFA data extracted with at least the following
+#'columns: SID, ColID
+#'
+#'
+#'@return newfile a dataframe that has had metadata added to it
+
+sample_label <- function(df){
+  df %>%
+    separate(col = SID,into = c("Exp","Plate","Well"),extra = "merge",fill = "right",remove = FALSE) %>%
+    mutate(ColID = as.numeric(substr(ColID, 10, 11)), #Current format is ColumnID=##, so chars 10-11 corrispond to those numbers
+           SampleType = if_else(Exp == "Blank", "Blank",
+                                if_else(grepl("c",Plate),"Calibration",
+                                        if_else(grepl("[A,C,M,T][Q,M,N,W]",Well),"Control","Sample"))),
+           CurveID = if_else(grepl("Cal",SampleType),as.numeric(substr(Plate,2,3)),NaN),
+           PlateID = if_else(!grepl("Calibration",SampleType),as.numeric(substr(Plate,2,3)),NaN),
+           ControlNum = if_else(grepl("Con",SampleType),as.numeric(substr(Well,4,5)),NaN))
+}
+

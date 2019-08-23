@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566224463862.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1828025643",
+    "id" : "6B71FE1A",
+    "lastKnownWriteTime" : 1566330708,
+    "last_content_update" : 1566330708312,
+    "path" : "C:/Users/jpruyne/Documents/Code_Exploring/SCFA_Pipeline/R_Scripts/peakassignment/R/GCmetadata.R",
+    "project_path" : "R/GCmetadata.R",
+    "properties" : {
+        "cursorPosition" : "12,2",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,15 @@
+"0","calc_data %>% "
+"0","  filter(SampleType == ""Control"", Analyte != ""FA"", grepl(""CM"",Well),grepl(""G"",Exp)) %>% "
+"0","  filter() %>% "
+"0","  group_by(Exp,PlateID,ColID,Analyte) %>%"
+"0","  summarise(MeanConc = mean(Conc.mM),"
+"0","            CVConc = sd(Conc.mM)/MeanConc*100,"
+"0","            PercRecov = MeanConc/10*100,"
+"0","            #PercError = abs(10-MeanConc)/10*100,"
+"0","            MeanArea = mean(Area),"
+"0","            Count = n()) %>%"
+"0","  mutate_if(is.double,funs(round(.,1))) %>% "
+"0","  print(n = Inf)"
+"2","`mutate_if()` ignored the following grouping variables:
+Columns `Exp`, `PlateID`, `ColID`
+"

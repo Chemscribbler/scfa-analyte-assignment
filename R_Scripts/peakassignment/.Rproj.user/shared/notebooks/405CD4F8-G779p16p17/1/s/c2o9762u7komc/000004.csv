@@ -1,0 +1,7 @@
+"0","  #write_csv(path = ""C:/Users/jpruyne/Documents/Raw_SCFA_Data/20190626-Red/10mM_controls.csv"")"
+"0",""
+"0","calc_data %>% "
+"0","  filter(SampleType == ""Control"", Analyte != ""FA"", grepl(""CM"",Well),grepl(""G"",Exp)) %>% "
+"0","  filter(Analyte != ""IS"") %>% "
+"0","  group_by(Exp,PlateID,ColID,Analyte) %>%"
+"0","  ggplot(mapping = aes(x = ControlNum, y = Conc.mM, color = as.factor(PlateID)))+geom_point()+facet_grid(Analyte~ColID)"

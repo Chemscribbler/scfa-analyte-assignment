@@ -1,0 +1,6 @@
+"0",""
+"0","#More quality checks"
+"0","curvedata %>% "
+"0","  mutate(stats = map(fit,glance)) %>% "
+"0","  unnest(stats) %>% "
+"0","  filter(Analyte %in% c(""AA"",""PA"",""BA""))"

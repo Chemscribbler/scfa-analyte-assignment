@@ -1,0 +1,8 @@
+"0",""
+"0","calc_data %>% "
+"0","  mutate(Conc.mM = Conc.mM,"
+"0","         PlateRow = substr(Well,1,1), PlateCol = substr(Well,2,3),"
+"0","         PlateRow = factor(PlateRow, levels = rev(levels(factor(PlateRow))))) %>% "
+"0","  filter(PlateCol != 12, Analyte != ""FA"") %>% "
+"0","  ggplot(mapping = aes(y = PlateRow, x = as.integer(PlateCol)))+geom_raster(aes(fill = Conc.mM))+"
+"0","  facet_grid(Analyte~PlateID)"

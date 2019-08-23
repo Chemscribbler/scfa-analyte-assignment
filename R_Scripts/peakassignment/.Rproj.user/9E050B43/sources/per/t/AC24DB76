@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566224426758.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3920630657",
+    "id" : "AC24DB76",
+    "lastKnownWriteTime" : 1566224424,
+    "last_content_update" : 1566224424,
+    "path" : "C:/Users/jpruyne/Documents/Code_Exploring/SCFA_Pipeline/R_Scripts/peakassignment/R/hello.R",
+    "project_path" : "R/hello.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

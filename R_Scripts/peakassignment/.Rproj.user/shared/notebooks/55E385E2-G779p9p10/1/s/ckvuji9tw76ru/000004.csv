@@ -1,0 +1,40 @@
+"0",""
+"0","calc_data %>% "
+"0","  unite(SampleID,Exp, Plate, Well, sep = ""."") %>% "
+"0","  select(ColID, SampleID, Analyte, Conc.mM, Area, RT) %>% "
+"0","  write_csv(""C:/Users/jpruyne/Documents/Raw_SCFA_Data/20190815-Blue/G779p9p10.csv"")"
+"0",""
+"0","read_csv(""C:/Users/jpruyne/Documents/Raw_SCFA_Data/20190815-Blue/G779p9p10.csv"") %>%"
+"0","  filter(!(Analyte %in% ""FA""),grepl(""G"",SampleID)) %>%"
+"0","  filter(Conc.mM >0) %>%"
+"0","  filter("
+"0","    !grepl(""p9.B2"",SampleID), #Bad injection"
+"0","    !grepl(""p9.[E,F,G]7"",SampleID) #Inconsistent samples"
+"0","         ) %>% "
+"0","  select(ColID, SampleID, Analyte, Conc.mM, Area, RT) %>% "
+"0","  write_csv(""C:/Users/jpruyne/Documents/Raw_SCFA_Data/20190815-Blue/G779p9p10cleaned.csv"")"
+"2","Parsed with column specification:
+cols(
+  ColID = [32mcol_double()[39m,
+  SampleID = [31mcol_character()[39m,
+  Analyte = [31mcol_character()[39m,
+  Conc.mM = [32mcol_double()[39m,
+  Area = [32mcol_double()[39m,
+  RT = [32mcol_double()[39m
+)
+"
+"0","read_csv(""C:/Users/jpruyne/Documents/Raw_SCFA_Data/20190815-Blue/G779p9p10cleaned.csv"") %>%"
+"0","  filter(Analyte != ""IsoBA"") %>%"
+"0","  filter(Conc.mM >0) %>% "
+"0","  select(ColID, SampleID, Analyte, Conc.mM, Area, RT) %>% "
+"0","  write_csv(""C:/Users/jpruyne/Documents/Raw_SCFA_Data/20190815-Blue/G779p9p10final.csv"")"
+"2","Parsed with column specification:
+cols(
+  ColID = [32mcol_double()[39m,
+  SampleID = [31mcol_character()[39m,
+  Analyte = [31mcol_character()[39m,
+  Conc.mM = [32mcol_double()[39m,
+  Area = [32mcol_double()[39m,
+  RT = [32mcol_double()[39m
+)
+"

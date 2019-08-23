@@ -1,0 +1,48 @@
+#' Create a retention time table
+#'
+#' @param df dataframe that contains all peaks from an SCFA GC run
+#' @param analytelist a list of analytes that are in the standards, must be entered in order
+#' @param excludedpoints a list of points that should be excluded
+#' @param areacuttoff All points with areas less than this number will be excluded
+#' @param frontrtcutoff Points with retentions times less than this number will be excluded from the front column
+#' @param rearrtcutoff Points with retention times less than thsi number will be excluded from the rear column
+#'
+#' @return a dataframe with each GC column having all analytes assigned
+#'
+
+
+generate_retention_table <- function(df,analytelist=c("AA","PA","BA","IS"),
+                                     excludedpoints=NA, areacutoff=40,
+                                     frontrtcutoff=2.2, rearrtcutoff=2.0){
+  scfa_levels <- c("AA","FA","PA","IsoBA","BA","IsoVA","VA","IS","IsoCA","CA","HA")
+  analyte_table <- tibble(AnalyteIDNum = 1:length(analytelist),
+                          Analyte= factor(analytelist, levels = scfa_levels))
+
+  ref_table <- df %>%
+    filter(!SID %in% excludedpoints,
+           Area > areacutoff,
+           !is.na(RT),
+           if_else(ColID %% 2 == 0, RT > frontrtcutoff, RT > rearrtcutoff),
+           RT < 3.4,
+           SampleType == "Control") %>%
+    group_by(ColID,SID) %>%
+    arrange(RT, .by_group = TRUE) %>%
+    mutate(AnalyteIDNum = 1:n()) %>%
+    left_join(analyte_table) %>%
+    ungroup() %>%
+    group_by(ColID,Analyte) %>%
+    summarise(
+      MedRT = median(RT)
+    )
+
+  ref_table <- ref_table %>%
+    mutate(
+      RTmin = MedRT - 0.022,
+      RTmax = MedRT + 0.022
+    ) %>%
+    select(ColID, Analyte, RTmin, RTmax) %>%
+    filter(!is.na(Analyte))
+
+  return(ref_table)
+}
+

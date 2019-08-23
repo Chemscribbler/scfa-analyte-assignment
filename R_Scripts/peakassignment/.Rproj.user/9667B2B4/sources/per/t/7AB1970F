@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1566330994378.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1456573402",
+    "id" : "7AB1970F",
+    "lastKnownWriteTime" : 1566496795,
+    "last_content_update" : 1566496795,
+    "path" : "~/Code_Exploring/SCFA_Pipeline/R_Scripts/peakassignment/R/referencetable.R",
+    "project_path" : "R/referencetable.R",
+    "properties" : {
+        "cursorPosition" : "176,65",
+        "scrollLine" : "147"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
